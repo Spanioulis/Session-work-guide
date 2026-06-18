@@ -851,9 +851,20 @@ Devuélveme:
 
 ---
 
-## 8.9. Plantilla para aplicar una skill antes de ejecutar
+## 8.9. Plantilla para aplicar una skill
 
-Usar cuando quieres que OpenCode aplique una skill concreta a una tarea y revisar su enfoque antes de ejecutar.
+Usar cuando quieres que OpenCode aplique una skill concreta a una tarea.
+
+**Cuándo usar cada variante:**
+
+| Situación | Variante |
+|---|---|
+| Skill + cambio importante (accesibilidad, SEO, arquitectura, performance, migraciones, varios archivos) | **A — PLAN primero** |
+| Skill + cambio pequeño y cerrado (añadir aria-label, revisar un meta, corregir un alt) | **B — BUILD directo** |
+
+---
+
+### A — Variante PLAN primero
 
 **Fase:** <font color="#3B82F6">📋 PLAN</font> | **Modelo:** DeepSeek V4 Pro / GPT-5.5
 
@@ -861,6 +872,10 @@ Prompt para copiar y pegar:
 
 ```txt
 Lee AGENTS.md y la skill correspondiente.
+
+Lee esta skill como una norma de trabajo, no como una sugerencia.
+Aplícala solo cuando sea relevante para esta tarea.
+No leas ni apliques otras specs o skills salvo que estén explícitamente relacionadas.
 
 No modifiques archivos.
 
@@ -878,6 +893,29 @@ Explícame:
 5. Qué plan de ejecución propones.
 
 No ejecutes cambios todavía.
+```
+
+---
+
+### B — Variante BUILD directo
+
+Usar solo cuando la tarea es pequeña, concreta y el alcance está cerrado.
+
+**Fase:** <font color="#2563EB">🔨 BUILD</font> | **Modelo:** GLM-5.1 / GPT-5.5
+
+Prompt para copiar y pegar:
+
+```txt
+Lee AGENTS.md y la skill correspondiente.
+
+Lee esta skill como una norma de trabajo, no como una sugerencia.
+No leas ni apliques otras specs o skills.
+
+Aplica solo esta corrección concreta:
+
+[AQUÍ LA TAREA CONCRETA]
+
+No modifiques nada más.
 ```
 
 ---
@@ -1008,6 +1046,10 @@ No leas todas las specs.
 
 ```txt
 No ejecutes ninguna spec.
+```
+
+```txt
+No leas ni apliques otras specs o skills salvo que estén explícitamente relacionadas con esta tarea.
 ```
 
 ### Git
