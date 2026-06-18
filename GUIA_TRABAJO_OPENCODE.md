@@ -342,15 +342,13 @@ Aterrizar en el estado actual del proyecto antes de decidir el siguiente paso.
 
 Flujo:
 
-```txt
-<font color="#3B82F6">PLAN</font> aterrizaje
-  ↓
-Leer contexto mínimo
-  ↓
-Detectar estado actual
-  ↓
+<font color="#3B82F6">PLAN</font> aterrizaje  
+&nbsp;&nbsp;↓  
+Leer contexto mínimo  
+&nbsp;&nbsp;↓  
+Detectar estado actual  
+&nbsp;&nbsp;↓  
 Recomendar siguiente fase
-```
 
 Usar cuando:
 
@@ -368,13 +366,11 @@ Usar cuando:
 
 No necesita spec ni plan.
 
-```txt
-Prompt directo
-  ↓
-<font color="#2563EB">BUILD</font>
-  ↓
+Prompt directo  
+&nbsp;&nbsp;↓  
+<font color="#2563EB">BUILD</font>  
+&nbsp;&nbsp;↓  
 Resumen final
-```
 
 Ejemplos:
 
@@ -392,13 +388,11 @@ Ejemplos:
 
 No necesita spec, pero puede usar micro-plan.
 
-```txt
-Micro-plan
-  ↓
-<font color="#2563EB">BUILD</font>
-  ↓
+Micro-plan  
+&nbsp;&nbsp;↓  
+<font color="#2563EB">BUILD</font>  
+&nbsp;&nbsp;↓  
 Verificación
-```
 
 Ejemplos:
 
@@ -414,15 +408,13 @@ Ejemplos:
 
 Conviene usar spec y plan.
 
-```txt
-SPEC
-  ↓
-<font color="#3B82F6">PLAN</font>
-  ↓
-<font color="#2563EB">BUILD</font>
-  ↓
+SPEC  
+&nbsp;&nbsp;↓  
+<font color="#3B82F6">PLAN</font>  
+&nbsp;&nbsp;↓  
+<font color="#2563EB">BUILD</font>  
+&nbsp;&nbsp;↓  
 <font color="#10B981">VERIFY</font>
-```
 
 Ejemplos:
 
@@ -440,15 +432,13 @@ Ejemplos:
 
 Usar fases completas.
 
-```txt
-<font color="#F97316">EXPLORE</font>
-  ↓
-<font color="#3B82F6">PLAN</font>
-  ↓
-<font color="#2563EB">BUILD/FIX</font>
-  ↓
+<font color="#F97316">EXPLORE</font>  
+&nbsp;&nbsp;↓  
+<font color="#3B82F6">PLAN</font>  
+&nbsp;&nbsp;↓  
+<font color="#2563EB">BUILD/FIX</font>  
+&nbsp;&nbsp;↓  
 <font color="#10B981">VERIFY</font>
-```
 
 Ejemplos:
 
@@ -470,7 +460,7 @@ OpenCode funciona mejor cuando recibe el contexto justo, no cuando lee todo el r
 ```txt
 Da solo los archivos necesarios para la fase actual.
 No leas todas las specs por defecto.
-Usa <font color="#F97316">EXPLORE</font> si no sabes qué archivos son relevantes.
+Usa EXPLORE si no sabes qué archivos son relevantes.
 Usa AGENTS.md + handoff + spec actual como contexto base.
 ```
 
@@ -1102,7 +1092,7 @@ Si no pasan, el estado debe quedar claro:
 
 ```txt
 ¿Estoy empezando una sesión nueva?
-├── Sí → <font color="#3B82F6">PLAN</font> aterrizaje.
+├── Sí → PLAN aterrizaje.
 └── No → Siguiente pregunta.
 
 ¿Es un cambio pequeño y claro?
@@ -1111,22 +1101,22 @@ Si no pasan, el estado debe quedar claro:
 
 ¿Hay alguna duda sobre archivos o enfoque?
 ├── Sí → Micro-plan.
-└── No → <font color="#2563EB">BUILD</font> directo.
+└── No → BUILD directo.
 
 ¿Toca varios archivos, rutas, datos o arquitectura?
 ├── Sí → Crear spec.
 └── No → Prompt acotado.
 
 ¿Hay riesgo de romper algo importante?
-├── Sí → <font color="#3B82F6">PLAN</font> antes de <font color="#2563EB">BUILD</font>.
-└── No → <font color="#2563EB">BUILD</font>.
+├── Sí → PLAN antes de BUILD.
+└── No → BUILD.
 
 ¿Es un bug?
-├── Sí → <font color="#10B981">VERIFY/FIX</font>, no avanzar features.
+├── Sí → VERIFY/FIX, no avanzar features.
 └── No → Flujo normal.
 
 ¿Es migración o refactor grande?
-├── Sí → <font color="#F97316">EXPLORE</font> → <font color="#3B82F6">PLAN</font> → <font color="#2563EB">BUILD</font> → <font color="#10B981">VERIFY</font>.
+├── Sí → EXPLORE → PLAN → BUILD → VERIFY.
 └── No → Elegir nivel según alcance.
 ```
 
