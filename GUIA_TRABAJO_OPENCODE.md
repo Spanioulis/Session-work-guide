@@ -1,6 +1,7 @@
 # Guía de trabajo con OpenCode
 
-## <a href="https://github.com/Spanioulis/Session-work-guide/blob/main/GUIA_TRABAJO_OPENCODE.md">GitHub Repo</a>
+> [!NOTE]
+> [GitHub Repo](https://github.com/Spanioulis/Session-work-guide/blob/main/GUIA_TRABAJO_OPENCODE.md)
 
 Esta guía define una forma práctica de trabajar con **OpenCode** en proyectos de desarrollo.
 
