@@ -1113,6 +1113,80 @@ Devuélveme:
 
 ---
 
+## 9.9. Plantilla para aplicar una skill antes de ejecutar
+
+Usar cuando quieres que OpenCode aplique una skill concreta a una tarea, pero antes quieres revisar cómo la interpretaría y qué plan propone.
+
+Es útil para skills de:
+
+```txt
+- Accesibilidad.
+- SEO.
+- Performance.
+- Testing.
+- Refactor seguro.
+- WordPress.
+- Astro.
+- Tailwind.
+- Documentación.
+```
+
+Información para elegir fase/modelo:
+
+```txt
+Fase: PLAN skill
+PLAN
+Modelo: DeepSeek V4 Pro / GPT-5.5
+```
+
+Prompt para copiar y pegar:
+
+```txt
+Lee AGENTS.md y la skill correspondiente.
+
+No modifiques archivos.
+
+Objetivo:
+Aplicar esta skill a la siguiente tarea:
+
+[AQUÍ IRA LA TAREA CONCRETA]
+
+Explícame:
+
+1. Cómo aplicarías esta skill a la tarea.
+2. Qué archivos revisarías.
+3. Qué riesgos o puntos críticos ves.
+4. Qué criterios usarías para validar que la skill se ha aplicado bien.
+5. Qué plan de ejecución propones.
+
+No ejecutes cambios todavía.
+```
+
+Ejemplo aplicado:
+
+```txt
+Lee AGENTS.md y la skill de accesibilidad.
+
+No modifiques archivos.
+
+Objetivo:
+Aplicar esta skill a la siguiente tarea:
+
+Revisar la sección Hero de la home y proponer mejoras de accesibilidad.
+
+Explícame:
+
+1. Cómo aplicarías esta skill a la tarea.
+2. Qué archivos revisarías.
+3. Qué riesgos o puntos críticos ves.
+4. Qué criterios usarías para validar que la skill se ha aplicado bien.
+5. Qué plan de ejecución propones.
+
+No ejecutes cambios todavía.
+```
+
+---
+
 ## 10. Reglas de control de alcance
 
 Frases útiles para añadir a cualquier prompt:
