@@ -1,5 +1,7 @@
 # Guía de trabajo con OpenCode
 
+## <a href="https://github.com/Spanioulis/Session-work-guide/blob/main/GUIA_TRABAJO_OPENCODE.md">GitHub Repo</a>
+
 Esta guía define una forma práctica de trabajar con **OpenCode** en proyectos de desarrollo.
 
 La idea principal es trabajar de forma controlada, por fases y con tareas pequeñas, evitando pedirle al agente cambios demasiado amplios o poco definidos.
@@ -303,14 +305,14 @@ AGENTS.md → docs/handoff.md → docs/project-context.md → spec actual
 
 No todo necesita spec. No todo necesita plan. Pero todo necesita alcance claro.
 
-| Situación                                             | ¿Spec?   | ¿<font color="#3B82F6">📋 PLAN</font>? | Flujo                                                                                                                                               |
-| ----------------------------------------------------- | -------- | ----------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Cambio pequeño y claro (texto, imagen, estilo, botón) | No       | No                                  | Prompt directo                                                                                                                                      |
-| Cambio pequeño con dudas de enfoque                   | No       | Micro-plan                          | Micro-plan → <font color="#2563EB">🔨 BUILD</font>                                                                                                     |
-| Varios archivos, rutas, datos o arquitectura          | Sí       | Sí                                  | Spec → <font color="#3B82F6">📋 Plan</font> → <font color="#2563EB">🔨 Build</font>                                                                       |
-| Bug simple                                            | No       | No                                  | <font color="#10B981"><font color="#10B981">✅ VERIFY</font>/FIX</font>                                                                                                             |
-| Bug delicado                                          | Opcional | Sí                                  | <font color="#F97316">🔍 EXPLORE</font> → <font color="#3B82F6">📋 Plan</font> → <font color="#10B981">✅ Fix</font>                                         |
-| Migración o refactor grande                           | Sí       | Sí                                  | <font color="#F97316">🔍 EXPLORE</font> → <font color="#3B82F6">📋 Plan</font> → <font color="#2563EB">🔨 Build</font> → <font color="#10B981">✅ VERIFY</font> |
+| Situación                                             | ¿Spec?   | ¿<font color="#3B82F6">📋 PLAN</font>? | Flujo                                                                                                                                                           |
+| ----------------------------------------------------- | -------- | -------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Cambio pequeño y claro (texto, imagen, estilo, botón) | No       | No                                     | Prompt directo                                                                                                                                                  |
+| Cambio pequeño con dudas de enfoque                   | No       | Micro-plan                             | Micro-plan → <font color="#2563EB">🔨 BUILD</font>                                                                                                              |
+| Varios archivos, rutas, datos o arquitectura          | Sí       | Sí                                     | Spec → <font color="#3B82F6">📋 Plan</font> → <font color="#2563EB">🔨 Build</font>                                                                             |
+| Bug simple                                            | No       | No                                     | <font color="#10B981"><font color="#10B981">✅ VERIFY</font>/FIX</font>                                                                                         |
+| Bug delicado                                          | Opcional | Sí                                     | <font color="#F97316">🔍 EXPLORE</font> → <font color="#3B82F6">📋 Plan</font> → <font color="#10B981">✅ Fix</font>                                            |
+| Migración o refactor grande                           | Sí       | Sí                                     | <font color="#F97316">🔍 EXPLORE</font> → <font color="#3B82F6">📋 Plan</font> → <font color="#2563EB">🔨 Build</font> → <font color="#10B981">✅ VERIFY</font> |
 
 **No hace falta spec** si el cambio es pequeño, afecta a pocos archivos, no cambia arquitectura, no añade dependencias, no crea rutas y se puede verificar rápido. Ejemplos: cambiar un texto, añadir una imagen, ajustar un estilo, corregir un alt, cambiar un enlace, añadir un botón.
 
@@ -466,13 +468,13 @@ Usa AGENTS.md + handoff + spec actual como contexto base.
 
 Reglas por fase:
 
-| Fase                                       | Contexto mínimo                                            |
-| ------------------------------------------ | ---------------------------------------------------------- |
-| Aterrizaje                                 | AGENTS.md + handoff + README + package.json                |
-| <font color="#2563EB">🔨 BUILD</font> de spec | AGENTS.md + handoff + spec actual                          |
-| <font color="#2563EB">🔨 BUILD</font> pequeño | AGENTS.md + archivos implicados                            |
-| <font color="#10B981">✅ VERIFY</font>        | AGENTS.md + archivos del error + handoff                   |
-| No sabes qué tocar                         | <font color="#F97316">🔍 EXPLORE</font> en lugar de leer todo |
+| Fase                                          | Contexto mínimo                                               |
+| --------------------------------------------- | ------------------------------------------------------------- |
+| Aterrizaje                                    | AGENTS.md + handoff + README + package.json                   |
+| <font color="#2563EB">🔨 BUILD</font> de spec | AGENTS.md + handoff + spec actual                             |
+| <font color="#2563EB">🔨 BUILD</font> pequeño | AGENTS.md + archivos implicados                               |
+| <font color="#10B981">✅ VERIFY</font>        | AGENTS.md + archivos del error + handoff                      |
+| No sabes qué tocar                            | <font color="#F97316">🔍 EXPLORE</font> en lugar de leer todo |
 
 ---
 
@@ -857,10 +859,10 @@ Usar cuando quieres que OpenCode aplique una skill concreta a una tarea.
 
 **Cuándo usar cada variante:**
 
-| Situación | Variante |
-|---|---|
-| Skill + cambio importante (accesibilidad, SEO, arquitectura, performance, migraciones, varios archivos) | **A — PLAN primero** |
-| Skill + cambio pequeño y cerrado (añadir aria-label, revisar un meta, corregir un alt) | **B — BUILD directo** |
+| Situación                                                                                               | Variante              |
+| ------------------------------------------------------------------------------------------------------- | --------------------- |
+| Skill + cambio importante (accesibilidad, SEO, arquitectura, performance, migraciones, varios archivos) | **A — PLAN primero**  |
+| Skill + cambio pequeño y cerrado (añadir aria-label, revisar un meta, corregir un alt)                  | **B — BUILD directo** |
 
 ---
 
@@ -1127,11 +1129,11 @@ Si no pasan, el estado debe quedar claro:
 
 ### Tipos de <font color="#10B981">✅ VERIFY</font>
 
-| Tipo                                         | Descripción                                     | ¿Modifica archivos? | ¿Ejecuta comandos? |
-| -------------------------------------------- | ----------------------------------------------- | ------------------- | ------------------ |
-| <font color="#10B981">✅ VERIFY</font> lectura  | Revisar estado, archivos, problemas potenciales | No                  | No                 |
-| <font color="#10B981">✅ VERIFY</font> comandos | Ejecutar check/build/dev para validar           | No                  | Sí                 |
-| <font color="#10B981"><font color="#10B981">✅ VERIFY</font>/FIX</font>      | Diagnosticar y corregir con cambios mínimos     | Sí                  | Sí                 |
+| Tipo                                                                    | Descripción                                     | ¿Modifica archivos? | ¿Ejecuta comandos? |
+| ----------------------------------------------------------------------- | ----------------------------------------------- | ------------------- | ------------------ |
+| <font color="#10B981">✅ VERIFY</font> lectura                          | Revisar estado, archivos, problemas potenciales | No                  | No                 |
+| <font color="#10B981">✅ VERIFY</font> comandos                         | Ejecutar check/build/dev para validar           | No                  | Sí                 |
+| <font color="#10B981"><font color="#10B981">✅ VERIFY</font>/FIX</font> | Diagnosticar y corregir con cambios mínimos     | Sí                  | Sí                 |
 
 ---
 
@@ -1171,21 +1173,21 @@ Si no pasan, el estado debe quedar claro:
 
 ## 12. Tabla de casos
 
-| Caso                   | Spec     | Plan            | Flujo                                                                                                                                               |
-| ---------------------- | -------- | --------------- | --------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Aterrizar sesión nueva | No       | Sí              | <font color="#3B82F6">📋 PLAN</font> aterrizaje                                                                                                        |
-| Cambiar texto          | No       | No              | Prompt directo                                                                                                                                      |
-| Añadir imagen          | No       | No              | Prompt directo                                                                                                                                      |
-| Añadir sección simple  | No       | No / micro-plan | Prompt directo                                                                                                                                      |
-| Ajuste CSS pequeño     | No       | No              | Prompt directo                                                                                                                                      |
-| Componente pequeño     | Opcional | Micro-plan      | Prompt acotado                                                                                                                                      |
-| Nueva página           | Sí       | Sí              | Spec → <font color="#3B82F6">📋 Plan</font> → <font color="#2563EB">🔨 Build</font>                                                                       |
-| Nueva ruta             | Sí       | Sí              | Spec → <font color="#3B82F6">📋 Plan</font> → <font color="#2563EB">🔨 Build</font>                                                                       |
-| Sistema de datos       | Sí       | Sí              | <font color="#F97316">🔍 Explore</font> → <font color="#3B82F6">📋 Plan</font> → <font color="#2563EB">🔨 Build</font>                                       |
+| Caso                   | Spec     | Plan            | Flujo                                                                                                                                                           |
+| ---------------------- | -------- | --------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Aterrizar sesión nueva | No       | Sí              | <font color="#3B82F6">📋 PLAN</font> aterrizaje                                                                                                                 |
+| Cambiar texto          | No       | No              | Prompt directo                                                                                                                                                  |
+| Añadir imagen          | No       | No              | Prompt directo                                                                                                                                                  |
+| Añadir sección simple  | No       | No / micro-plan | Prompt directo                                                                                                                                                  |
+| Ajuste CSS pequeño     | No       | No              | Prompt directo                                                                                                                                                  |
+| Componente pequeño     | Opcional | Micro-plan      | Prompt acotado                                                                                                                                                  |
+| Nueva página           | Sí       | Sí              | Spec → <font color="#3B82F6">📋 Plan</font> → <font color="#2563EB">🔨 Build</font>                                                                             |
+| Nueva ruta             | Sí       | Sí              | Spec → <font color="#3B82F6">📋 Plan</font> → <font color="#2563EB">🔨 Build</font>                                                                             |
+| Sistema de datos       | Sí       | Sí              | <font color="#F97316">🔍 Explore</font> → <font color="#3B82F6">📋 Plan</font> → <font color="#2563EB">🔨 Build</font>                                          |
 | Migración              | Sí       | Sí              | <font color="#F97316">🔍 Explore</font> → <font color="#3B82F6">📋 Plan</font> → <font color="#2563EB">🔨 Build</font> → <font color="#10B981">✅ Verify</font> |
-| Bug simple             | No       | No              | <font color="#10B981"><font color="#10B981">✅ Verify</font>/Fix</font>                                                                                                             |
-| Bug delicado           | Opcional | Sí              | <font color="#F97316">🔍 Explore</font> → <font color="#3B82F6">📋 Plan</font> → <font color="#10B981">✅ Fix</font>                                         |
-| Refactor grande        | Sí       | Sí              | Spec → <font color="#3B82F6">📋 Plan</font> → <font color="#2563EB">🔨 Build</font>                                                                       |
+| Bug simple             | No       | No              | <font color="#10B981"><font color="#10B981">✅ Verify</font>/Fix</font>                                                                                         |
+| Bug delicado           | Opcional | Sí              | <font color="#F97316">🔍 Explore</font> → <font color="#3B82F6">📋 Plan</font> → <font color="#10B981">✅ Fix</font>                                            |
+| Refactor grande        | Sí       | Sí              | Spec → <font color="#3B82F6">📋 Plan</font> → <font color="#2563EB">🔨 Build</font>                                                                             |
 
 ---
 
