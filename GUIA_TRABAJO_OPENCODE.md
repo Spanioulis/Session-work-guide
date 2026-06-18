@@ -241,250 +241,68 @@ SPECS:
 
 ## 4. Uso de `AGENTS.md` en OpenCode
 
-`AGENTS.md` funciona como la regla base del proyecto para el agente.
-
-Se puede entender así:
+`AGENTS.md` es la regla base del proyecto para el agente. No es una spec ni una tarea: define cómo debe comportarse OpenCode en ese repositorio.
 
 ```txt
-README.md  → sirve para entender el proyecto
-AGENTS.md  → sirve para saber cómo debe trabajar el agente dentro del proyecto
+README.md  → para entender el proyecto.
+AGENTS.md  → para saber cómo debe trabajar el agente.
 ```
 
-Por tanto, `AGENTS.md` no es una spec ni una tarea concreta. Es el archivo que define el comportamiento general que OpenCode debe respetar mientras trabaja en ese repositorio.
+### Cuándo leerlo completo
 
----
+| Situación | Acción |
+|---|---|
+| Sesión nueva | Leer AGENTS.md + handoff + spec actual |
+| Cambio de modelo | Releer AGENTS.md |
+| Vuelta tras pausa larga | Releer AGENTS.md |
+| Cambios delicados (arquitectura, dependencias, rutas, SEO global, build/deploy) | Releer AGENTS.md + handoff + archivos afectados |
 
-### Cuándo leer `AGENTS.md`
+### Cuándo basta con "sigue AGENTS.md"
 
-#### 1. Al abrir una sesión nueva de OpenCode
-
-Siempre conviene leerlo al empezar una sesión nueva.
-
-Ejemplo:
-
-```txt
-Lee AGENTS.md, docs/handoff.md y la spec actual antes de tocar nada.
-```
-
-Esto ayuda a que el agente entienda las reglas generales antes de modificar código.
-
----
-
-#### 2. Cuando cambias de modelo
-
-También conviene releerlo si cambias de modelo durante el trabajo.
-
-Por ejemplo:
-
-```txt
-DeepSeek V4 Pro → GLM-5.1
-GPT-5.5 → Qwen
-```
-
-El nuevo modelo no tiene por qué arrastrar correctamente todas las reglas de trabajo anteriores, así que es mejor reforzar el contexto.
-
----
-
-#### 3. Antes de ejecutar una spec
-
-Si la spec implica cambios reales en código, conviene que OpenCode tenga presentes las reglas de `AGENTS.md`.
-
-Orden recomendado:
-
-```txt
-AGENTS.md
-docs/handoff.md
-specs/xxx.md
-```
-
-Si el proyecto tiene más documentación relevante, también puede añadirse:
-
-```txt
-AGENTS.md
-docs/project-context.md
-docs/handoff.md
-specs/xxx.md
-```
-
----
-
-#### 4. Después de una pausa larga
-
-Si vuelves al proyecto después de varios días, aunque estés en la misma rama, es recomendable releer `AGENTS.md`.
-
-Esto evita que el agente trabaje con contexto incompleto o desactualizado.
-
----
-
-#### 5. Antes de cambios delicados
-
-Conviene releer `AGENTS.md` antes de tocar partes sensibles del proyecto.
-
-Ejemplos:
-
-```txt
-- Cambiar arquitectura.
-- Añadir dependencias.
-- Tocar astro.config.mjs.
-- Cambiar sistema de content collections.
-- Cambiar build o deploy.
-- Tocar SEO global.
-- Tocar accesibilidad global.
-- Modificar estructura de rutas.
-```
-
----
-
-### Cuándo no hace falta repetirlo tanto
-
-Si estás en la misma sesión, con el mismo modelo, y encadenando tareas pequeñas, no hace falta pedirle que lea `AGENTS.md` completo cada vez.
-
-En ese caso basta con decir:
+En la misma sesión, mismo modelo, tareas pequeñas encadenadas:
 
 ```txt
 Sigue las reglas de AGENTS.md y ejecuta únicamente esta tarea.
 ```
 
-O, si estás ejecutando una spec:
+### Orden de lectura recomendado
 
 ```txt
-Sigue AGENTS.md y ejecuta únicamente esta spec.
+AGENTS.md → docs/handoff.md → spec actual
+```
+
+Con más documentación:
+
+```txt
+AGENTS.md → docs/handoff.md → docs/project-context.md → spec actual
 ```
 
 ---
 
-### Regla práctica
+## 5. Cuándo usar spec y cuándo pedir PLAN
 
-```txt
-Sesión nueva → leer AGENTS.md completo.
-Spec nueva en la misma sesión → seguir AGENTS.md + leer spec actual.
-Bug delicado → releer AGENTS.md + handoff + archivos afectados.
-Cambio de modelo → releer AGENTS.md.
-Cambio pequeño en la misma sesión → basta con “sigue AGENTS.md”.
-```
+No todo necesita spec. No todo necesita plan. Pero todo necesita alcance claro.
 
----
+| Situación | ¿Spec? | ¿PLAN? | Flujo |
+|---|---|---|---|
+| Cambio pequeño y claro (texto, imagen, estilo, botón) | No | No | Prompt directo |
+| Cambio pequeño con dudas de enfoque | No | Micro-plan | Micro-plan → BUILD |
+| Varios archivos, rutas, datos o arquitectura | Sí | Sí | Spec → Plan → Build |
+| Bug simple | No | No | VERIFY/FIX |
+| Bug delicado | Opcional | Sí | EXPLORE → Plan → Fix |
+| Migración o refactor grande | Sí | Sí | EXPLORE → Plan → Build → VERIFY |
 
-### Idea clave
+**No hace falta spec** si el cambio es pequeño, afecta a pocos archivos, no cambia arquitectura, no añade dependencias, no crea rutas y se puede verificar rápido. Ejemplos: cambiar un texto, añadir una imagen, ajustar un estilo, corregir un alt, cambiar un enlace, añadir un botón.
 
-`AGENTS.md` debe funcionar como una regla base persistente del repositorio.
+**Sí conviene spec** si la tarea afecta a varios archivos, crea componentes reutilizables, páginas o rutas nuevas, usa datos dinámicos, afecta a SEO de forma importante, o necesitas continuar en otra sesión. Ejemplos: crear sistema de proyectos, página de detalle, sección reutilizable compleja, integración con CMS/API.
 
-No hace falta copiar sus reglas completas en cada prompt, pero sí conviene pedir a OpenCode que las tenga presentes cuando empieza una sesión, cambia de modelo, ejecuta una spec o toca zonas delicadas.
+**No hace falta PLAN** si la tarea es pequeña, el objetivo está claro, el alcance está cerrado y no hay decisiones técnicas relevantes.
 
----
-
-## 5. Cuándo usar spec
-
-No hay que crear una spec para todo.
-
-Una spec tiene sentido cuando necesitas control, continuidad o trazabilidad.
+**Sí conviene PLAN** si estás aterrizando en una sesión nueva, hay varias formas de hacerlo, no sabes qué archivos tocar, puede afectar a arquitectura, o quieres revisar antes de ejecutar.
 
 ---
 
-### No hace falta spec si...
-
-```txt
-- Es un cambio pequeño.
-- Afecta a pocos archivos.
-- No cambia arquitectura.
-- No añade dependencias.
-- No crea rutas nuevas.
-- No toca datos complejos.
-- Se puede verificar rápido.
-```
-
-Ejemplos:
-
-```txt
-- Cambiar un texto.
-- Añadir una imagen.
-- Añadir una sección simple.
-- Ajustar un estilo.
-- Corregir un alt.
-- Cambiar un enlace.
-- Añadir un botón.
-```
-
----
-
-### Sí conviene spec si...
-
-```txt
-- La tarea afecta a varios archivos.
-- Crea componentes reutilizables.
-- Crea páginas nuevas.
-- Crea rutas.
-- Usa datos dinámicos.
-- Afecta a SEO de forma importante.
-- Puede cambiar arquitectura.
-- Forma parte de una migración.
-- Necesitas continuar en otra sesión.
-```
-
-Ejemplos:
-
-```txt
-- Crear sistema de proyectos.
-- Crear página de detalle.
-- Crear sección reutilizable compleja.
-- Crear navegación nueva.
-- Migrar una home completa.
-- Hacer un refactor.
-- Integrar datos desde CMS, JSON, Markdown o API.
-```
-
----
-
-## 6. Cuándo pedir PLAN
-
-No siempre hace falta pedir PLAN.
-
----
-
-### No hace falta PLAN si...
-
-```txt
-- La tarea es pequeña.
-- El objetivo está claro.
-- El alcance está cerrado.
-- No hay decisiones técnicas relevantes.
-```
-
-Ejemplo:
-
-```txt
-Añade una sección simple con título e imagen en la home.
-```
-
-Flujo recomendado:
-
-```txt
-Prompt directo → BUILD → Verificación rápida
-```
-
----
-
-### Sí conviene PLAN si...
-
-```txt
-- Estás aterrizando en una sesión nueva.
-- Hay varias formas de hacerlo.
-- No sabes qué archivos tocar.
-- Puede afectar a arquitectura.
-- Puede afectar a varias páginas.
-- Hay riesgo de que el agente se adelante.
-- Quieres revisar antes de ejecutar.
-```
-
-Flujo recomendado:
-
-```txt
-PLAN → revisar → BUILD
-```
-
----
-
-## 7. Niveles de tarea
+## 6. Niveles de tarea
 
 ### Nivel 0 — Aterrizaje de sesión
 
@@ -625,7 +443,7 @@ Ejemplos:
 
 ---
 
-## 8. Modelos recomendados según tipo de trabajo
+## 7. Modelos recomendados según tipo de trabajo
 
 Esta tabla sirve como orientación práctica para elegir modelo según la fase de trabajo en OpenCode.
 
@@ -666,7 +484,53 @@ La idea no es usar siempre el modelo más potente, sino reservarlo para las fase
 
 ---
 
+## 8. Cómo dar contexto sin saturar al agente
+
+OpenCode funciona mejor cuando recibe el contexto justo, no cuando lee todo el repositorio.
+
+```txt
+Da solo los archivos necesarios para la fase actual.
+No leas todas las specs por defecto.
+Usa EXPLORE si no sabes qué archivos son relevantes.
+Usa AGENTS.md + handoff + spec actual como contexto base.
+```
+
+Reglas por fase:
+
+| Fase | Contexto mínimo |
+|---|---|
+| Aterrizaje | AGENTS.md + handoff + README + package.json |
+| BUILD de spec | AGENTS.md + handoff + spec actual |
+| BUILD pequeño | AGENTS.md + archivos implicados |
+| VERIFY | AGENTS.md + archivos del error + handoff |
+| No sabes qué tocar | EXPLORE en lugar de leer todo |
+
+---
+
 # 9. Plantillas de prompts
+
+## 9.0. Bloque común de reglas
+
+Estas reglas aplican a las plantillas de tipo BUILD. Se incluyen aquí para evitar repetirlas en cada una:
+
+```txt
+Alcance:
+- Modifica solo los archivos necesarios.
+- Reutiliza la estructura y estilos existentes.
+- No añadas dependencias salvo que sea imprescindible y lo justifiques.
+- No cambies arquitectura salvo que sea necesario y lo expliques antes.
+- No avances otras tareas.
+- Mantén HTML semántico y responsive.
+- Revisa accesibilidad básica: alt correcto, heading coherente y foco si aplica.
+
+Al terminar, muestra:
+- Archivos modificados.
+- Cambios realizados.
+- Comandos ejecutados.
+- Resultado de build/check si procede.
+```
+
+Las plantillas que usan este bloque lo indican con: **Aplica el bloque común de reglas (9.0).**
 
 ---
 
@@ -752,67 +616,25 @@ Devuélveme:
 
 ---
 
-## 9.2. Plantilla fija para cambio pequeño sin spec
+## 9.2. Plantilla para cambio pequeño sin spec
 
 Usar cuando la tarea sea pequeña, localizada y no requiera una spec formal.
 
-Está pensada para pegarse directamente en una sesión `BUILD`.
-
-La parte fija va primero.
-
-La parte variable va al final, para no tener que editar líneas ya pegadas.
-
-Información para elegir fase/modelo:
-
-```txt
-Fase: BUILD cambio pequeño
-BUILD
-Modelo: GLM-5.1 / DeepSeek V4 Pro
-```
+**Fase:** BUILD | **Modelo:** GLM-5.1 / DeepSeek V4 Pro
 
 Prompt para copiar y pegar:
 
 ```txt
-Añade una mejora pequeña y localizada siguiendo estas reglas.
-
-Alcance:
-- Modifica solo los archivos necesarios.
-- Reutiliza la estructura y estilos existentes.
-- No añadas dependencias.
-- No cambies arquitectura.
-- No avances otras tareas.
-- Mantén HTML semántico y responsive.
-- Revisa accesibilidad básica: alt correcto, heading coherente y foco si aplica.
-
-Al terminar, muestra:
-- Archivos modificados.
-- Cambios realizados.
-- Comandos ejecutados.
-- Resultado de build/check si procede.
+Añade una mejora pequeña y localizada. Aplica el bloque común de reglas (9.0).
 
 Objetivo concreto:
-[AQUÍ IRA EL OBJETIVO DEL PROMPT, LA FEATURE O EL CAMBIO QUE QUEREMOS CONSEGUIR]
+[AQUÍ EL OBJETIVO]
 ```
 
 Ejemplo aplicado:
 
 ```txt
-Añade una mejora pequeña y localizada siguiendo estas reglas.
-
-Alcance:
-- Modifica solo los archivos necesarios.
-- Reutiliza la estructura y estilos existentes.
-- No añadas dependencias.
-- No cambies arquitectura.
-- No avances otras tareas.
-- Mantén HTML semántico y responsive.
-- Revisa accesibilidad básica: alt correcto, heading coherente y foco si aplica.
-
-Al terminar, muestra:
-- Archivos modificados.
-- Cambios realizados.
-- Comandos ejecutados.
-- Resultado de build/check si procede.
+Añade una mejora pequeña y localizada. Aplica el bloque común de reglas (9.0).
 
 Objetivo concreto:
 Añade una sección simple con título e imagen en la home.
@@ -824,13 +646,7 @@ Añade una sección simple con título e imagen en la home.
 
 Usar cuando el cambio parece pequeño, pero quieres que OpenCode piense antes de tocar archivos.
 
-Información para elegir fase/modelo:
-
-```txt
-Fase: PLAN micro-cambio
-PLAN
-Modelo: DeepSeek V4 Pro / GPT-5.5
-```
+**Fase:** PLAN | **Modelo:** DeepSeek V4 Pro / GPT-5.5
 
 Prompt para copiar y pegar:
 
@@ -838,25 +654,15 @@ Prompt para copiar y pegar:
 Quiero hacer una mejora pequeña y localizada.
 
 Antes de modificar archivos, dime brevemente:
-
 - Qué archivos tocarías.
 - Si crearías componente nuevo o reutilizarías uno existente.
 - Riesgos mínimos.
 - Si ves necesario crear una spec formal o no.
 
-Después, si confirmas que el alcance es simple, ejecuta el cambio sin crear una spec formal.
-
-Reglas:
-- Modifica solo los archivos necesarios.
-- Reutiliza la estructura y estilos existentes.
-- No añadas dependencias.
-- No cambies arquitectura.
-- No avances otras tareas.
-- Mantén HTML semántico y responsive.
-- Revisa accesibilidad básica.
+Después, si confirmas que el alcance es simple, ejecuta el cambio aplicando el bloque común de reglas (9.0).
 
 Objetivo concreto:
-[AQUÍ IRA EL OBJETIVO DEL PROMPT]
+[AQUÍ EL OBJETIVO]
 ```
 
 Ejemplo aplicado:
@@ -865,22 +671,12 @@ Ejemplo aplicado:
 Quiero hacer una mejora pequeña y localizada.
 
 Antes de modificar archivos, dime brevemente:
-
 - Qué archivos tocarías.
 - Si crearías componente nuevo o reutilizarías uno existente.
 - Riesgos mínimos.
 - Si ves necesario crear una spec formal o no.
 
-Después, si confirmas que el alcance es simple, ejecuta el cambio sin crear una spec formal.
-
-Reglas:
-- Modifica solo los archivos necesarios.
-- Reutiliza la estructura y estilos existentes.
-- No añadas dependencias.
-- No cambies arquitectura.
-- No avances otras tareas.
-- Mantén HTML semántico y responsive.
-- Revisa accesibilidad básica.
+Después, si confirmas que el alcance es simple, ejecuta el cambio aplicando el bloque común de reglas (9.0).
 
 Objetivo concreto:
 Añade una sección simple con título e imagen en la home.
@@ -892,13 +688,7 @@ Añade una sección simple con título e imagen en la home.
 
 Usar cuando quieres revisar el enfoque antes de ejecutar.
 
-Información para elegir fase/modelo:
-
-```txt
-Fase: PLAN feature
-PLAN
-Modelo: DeepSeek V4 Pro / GPT-5.5
-```
+**Fase:** PLAN | **Modelo:** DeepSeek V4 Pro / GPT-5.5
 
 Prompt para copiar y pegar:
 
@@ -908,7 +698,7 @@ Crea un plan para esta tarea.
 No modifiques archivos todavía.
 
 Objetivo:
-[AQUÍ IRA EL OBJETIVO]
+[AQUÍ EL OBJETIVO]
 
 El plan debe incluir:
 - Archivos que tocarías.
@@ -927,36 +717,20 @@ No ejecutes cambios.
 
 Usar cuando OpenCode ya ha creado un plan y tú lo has revisado.
 
-Información para elegir fase/modelo:
-
-```txt
-Fase: BUILD plan aprobado
-BUILD
-Modelo: GLM-5.1 / GPT-5.5
-```
+**Fase:** BUILD | **Modelo:** GLM-5.1 / GPT-5.5
 
 Prompt para copiar y pegar:
 
 ```txt
-Sí, apruebo el plan.
-
-Ejecuta los cambios siguiendo exactamente este alcance:
+Sí, apruebo el plan. Ejecuta los cambios siguiendo exactamente este alcance:
 
 [PEGAR AQUÍ EL PLAN APROBADO O SUS TAREAS]
 
-Reglas:
+Aplica el bloque común de reglas (9.0) y además:
 - No amplíes el alcance.
-- No añadas features nuevas.
-- No cambies arquitectura salvo que el plan lo indique.
-- No añadas dependencias salvo que el plan lo justifique.
-- No avances a otra tarea.
 - Si aparece un problema que obliga a cambiar el plan, para y explica la situación antes de seguir.
 
-Al terminar, muestra:
-- Archivos modificados.
-- Cambios realizados.
-- Comandos ejecutados.
-- Resultado de check/build/dev si procede.
+Al terminar, muestra también:
 - Problemas encontrados.
 - Estado final.
 - Próximo paso recomendado.
@@ -968,13 +742,7 @@ Al terminar, muestra:
 
 Usar cuando la tarea ya está definida en una spec.
 
-Información para elegir fase/modelo:
-
-```txt
-Fase: BUILD spec
-BUILD
-Modelo: GLM-5.1 / GPT-5.5
-```
+**Fase:** BUILD | **Modelo:** GLM-5.1 / GPT-5.5
 
 Prompt para copiar y pegar:
 
@@ -984,26 +752,22 @@ Ejecuta únicamente la spec:
 specs/XXX-nombre.md
 
 Antes de tocar nada, lee:
-
 - AGENTS.md
 - docs/handoff.md
 - la spec indicada
 
+Aplica el bloque común de reglas (9.0).
+
 No avances a la siguiente spec.
 No amplíes el alcance.
 
-Al terminar, actualiza la spec si procede y muestra:
-
-- Archivos modificados.
-- Cambios realizados.
-- Comandos ejecutados.
-- Resultado de check/build/dev.
+Al terminar, actualiza la spec si procede y muestra también:
 - Problemas encontrados.
 - Estado final de la spec.
 - Próxima spec recomendada.
 ```
 
-Versión con más contexto, para proyectos con documentación adicional:
+Versión con más contexto (documentación adicional):
 
 ```txt
 Ejecuta únicamente la spec:
@@ -1011,26 +775,17 @@ Ejecuta únicamente la spec:
 specs/XXX-nombre.md
 
 Antes de tocar nada, lee:
-
 - AGENTS.md
-- docs/project-context.md
 - docs/handoff.md
+- docs/project-context.md
 - specs/XXX-nombre.md
+
+Aplica el bloque común de reglas (9.0).
 
 No avances a la siguiente spec.
 No amplíes el alcance.
 
-Al terminar, actualiza:
-
-- docs/handoff.md
-- specs/XXX-nombre.md
-
-Y muestra:
-
-- Archivos modificados.
-- Cambios realizados.
-- Comandos ejecutados.
-- Resultado de check/build/dev.
+Al terminar, actualiza docs/handoff.md y la spec, y muestra también:
 - Problemas encontrados.
 - Estado final de la spec.
 - Próxima spec recomendada.
@@ -1042,13 +797,7 @@ Y muestra:
 
 Usar cuando algo falla y no quieres avanzar features.
 
-Información para elegir fase/modelo:
-
-```txt
-Fase: VERIFY/FIX
-VERIFY
-Modelo: GPT-5.5 / DeepSeek V4 Pro
-```
+**Fase:** VERIFY/FIX | **Modelo:** GPT-5.5 / DeepSeek V4 Pro
 
 Prompt para copiar y pegar:
 
@@ -1085,13 +834,7 @@ Al terminar, muestra:
 
 Usar cuando solo quieres revisar el estado.
 
-Información para elegir fase/modelo:
-
-```txt
-Fase: VERIFY lectura
-VERIFY
-Modelo: DeepSeek V4 Pro / GPT-5.5
-```
+**Fase:** VERIFY | **Modelo:** DeepSeek V4 Pro / GPT-5.5
 
 Prompt para copiar y pegar:
 
@@ -1099,7 +842,7 @@ Prompt para copiar y pegar:
 Verifica el estado actual sin modificar archivos.
 
 Objetivo:
-[AQUÍ IRA LO QUE QUIERES COMPROBAR]
+[AQUÍ LO QUE QUIERES COMPROBAR]
 
 No hagas cambios.
 
@@ -1115,29 +858,9 @@ Devuélveme:
 
 ## 9.9. Plantilla para aplicar una skill antes de ejecutar
 
-Usar cuando quieres que OpenCode aplique una skill concreta a una tarea, pero antes quieres revisar cómo la interpretaría y qué plan propone.
+Usar cuando quieres que OpenCode aplique una skill concreta a una tarea y revisar su enfoque antes de ejecutar.
 
-Es útil para skills de:
-
-```txt
-- Accesibilidad.
-- SEO.
-- Performance.
-- Testing.
-- Refactor seguro.
-- WordPress.
-- Astro.
-- Tailwind.
-- Documentación.
-```
-
-Información para elegir fase/modelo:
-
-```txt
-Fase: PLAN skill
-PLAN
-Modelo: DeepSeek V4 Pro / GPT-5.5
-```
+**Fase:** PLAN | **Modelo:** DeepSeek V4 Pro / GPT-5.5
 
 Prompt para copiar y pegar:
 
@@ -1149,7 +872,7 @@ No modifiques archivos.
 Objetivo:
 Aplicar esta skill a la siguiente tarea:
 
-[AQUÍ IRA LA TAREA CONCRETA]
+[AQUÍ LA TAREA CONCRETA]
 
 Explícame:
 
@@ -1162,27 +885,85 @@ Explícame:
 No ejecutes cambios todavía.
 ```
 
-Ejemplo aplicado:
+---
+
+## 9.10. Plantilla para crear una spec
+
+Usar cuando necesitas definir una tarea formal antes de ejecutar.
+
+**Fase:** PLAN | **Modelo:** DeepSeek V4 Pro / GPT-5.5
+
+Prompt para copiar y pegar:
 
 ```txt
-Lee AGENTS.md y la skill de accesibilidad.
-
-No modifiques archivos.
+Crea una spec para esta feature sin modificar código.
 
 Objetivo:
-Aplicar esta skill a la siguiente tarea:
+[AQUÍ EL OBJETIVO]
 
-Revisar la sección Hero de la home y proponer mejoras de accesibilidad.
+La spec debe incluir:
+- Objetivo concreto.
+- Alcance detallado.
+- Archivos probables.
+- Tareas ordenadas.
+- Riesgos detectados.
+- Verificaciones necesarias.
+- Criterios de aceptación.
+- Qué no debe hacerse todavía.
 
-Explícame:
+Devuélveme la spec lista para guardar en specs/.
+```
 
-1. Cómo aplicarías esta skill a la tarea.
-2. Qué archivos revisarías.
-3. Qué riesgos o puntos críticos ves.
-4. Qué criterios usarías para validar que la skill se ha aplicado bien.
-5. Qué plan de ejecución propones.
+---
+
+## 9.11. Plantilla para REVIEW sin modificar archivos
+
+Usar cuando quieres una revisión tipo code review de los cambios actuales.
+
+**Fase:** VERIFY | **Modelo:** GPT-5.5 / DeepSeek V4 Pro
+
+Prompt para copiar y pegar:
+
+```txt
+Revisa los cambios actuales como code review sin modificar archivos.
+
+Revisa:
+- Bugs introducidos.
+- Regresiones.
+- Riesgos detectados.
+- Tests o checks faltantes.
+- Cambios fuera de alcance.
+- Problemas de accesibilidad o SEO si aplica.
+
+Devuélveme:
+- Lista de hallazgos ordenados por prioridad.
+- Recomendación de siguiente paso.
+```
+
+---
+
+## 9.12. Plantilla para continuación de sesión o tarea interrumpida
+
+Usar cuando una tarea quedó a medias y necesitas recuperar estado.
+
+**Fase:** PLAN | **Modelo:** DeepSeek V4 Pro / GPT-5.5
+
+Prompt para copiar y pegar:
+
+```txt
+Recupera el estado de la sesión anterior.
+
+Lee AGENTS.md y docs/handoff.md.
 
 No ejecutes cambios todavía.
+
+Devuélveme:
+1. Qué se hizo en la última sesión.
+2. Qué queda pendiente.
+3. Qué archivos están implicados.
+4. Qué verificaciones faltan.
+5. Siguiente paso recomendado.
+6. Fase recomendada: EXPLORE, PLAN, BUILD o VERIFY.
 ```
 
 ---
@@ -1229,6 +1010,22 @@ No leas todas las specs.
 
 ```txt
 No ejecutes ninguna spec.
+```
+
+### Git
+
+```txt
+Revisa el diff actual antes de hacer cambios si procede.
+No reviertas cambios ajenos.
+No hagas commit salvo petición explícita.
+Separa tus cambios de los cambios existentes.
+```
+
+### Problemas fuera de alcance
+
+```txt
+Si detectas un problema no relacionado con la tarea actual, no lo corrijas directamente.
+Repórtalo como follow-up para una tarea futura.
 ```
 
 ---
@@ -1287,6 +1084,14 @@ Si no pasan, el estado debe quedar claro:
 - Bloqueada.
 - En revisión.
 ```
+
+### Tipos de VERIFY
+
+| Tipo | Descripción | ¿Modifica archivos? | ¿Ejecuta comandos? |
+|---|---|---|---|
+| VERIFY lectura | Revisar estado, archivos, problemas potenciales | No | No |
+| VERIFY comandos | Ejecutar check/build/dev para validar | No | Sí |
+| VERIFY/FIX | Diagnosticar y corregir con cambios mínimos | Sí | Sí |
 
 ---
 
@@ -1393,21 +1198,15 @@ Cambio pequeño con dudas → micro-plan.
 Feature importante → spec + plan.
 Bug → VERIFY/FIX.
 Migración o arquitectura → EXPLORE + PLAN + BUILD + VERIFY.
-```
 
-```txt
 AGENTS marcan cómo trabajar.
 SKILLS aportan criterio especializado.
 SPECS definen qué se hace ahora.
-```
 
-```txt
 No todo necesita spec.
 No todo necesita plan.
 Pero todo necesita alcance claro.
-```
 
-```txt
 No leas todo por defecto.
 Lee solo lo necesario para la fase actual.
 ```
