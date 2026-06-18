@@ -1,4 +1,4 @@
-# <font color="#6082B6">Guía de trabajo con OpenCode</font>
+# Guía de trabajo con OpenCode
 
 Esta guía define una forma práctica de trabajar con **OpenCode** en proyectos de desarrollo.
 
@@ -44,7 +44,7 @@ Documentar si procede
 
 ## 2. Fases de trabajo
 
-## <font color="#F97316">EXPLORE</font>
+## <font color="#F97316">🔍 EXPLORE</font>
 
 Se usa para entender el proyecto o una parte concreta **sin modificar archivos**.
 
@@ -79,7 +79,7 @@ Devuélveme:
 
 ---
 
-## <font color="#3B82F6">PLAN</font>
+## <font color="#3B82F6">📋 PLAN</font>
 
 Se usa para pedir un plan, aterrizar contexto o decidir el siguiente paso **antes de ejecutar cambios**.
 
@@ -117,7 +117,7 @@ El plan debe incluir:
 
 ---
 
-## <font color="#2563EB">BUILD</font>
+## <font color="#2563EB">🔨 BUILD</font>
 
 Se usa para ejecutar cambios.
 
@@ -151,7 +151,7 @@ Al terminar, muestra:
 
 ---
 
-## <font color="#10B981">VERIFY</font>
+## <font color="#10B981">✅ VERIFY</font>
 
 Se usa para revisar, validar o corregir.
 
@@ -299,26 +299,26 @@ AGENTS.md → docs/handoff.md → docs/project-context.md → spec actual
 
 ---
 
-## 5. Cuándo usar spec y cuándo pedir <font color="#3B82F6">PLAN</font>
+## 5. Cuándo usar spec y cuándo pedir <font color="#3B82F6">📋 PLAN</font>
 
 No todo necesita spec. No todo necesita plan. Pero todo necesita alcance claro.
 
-| Situación                                             | ¿Spec?   | ¿<font color="#3B82F6">PLAN</font>? | Flujo                                                                                                                                               |
+| Situación                                             | ¿Spec?   | ¿<font color="#3B82F6">📋 PLAN</font>? | Flujo                                                                                                                                               |
 | ----------------------------------------------------- | -------- | ----------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------- |
 | Cambio pequeño y claro (texto, imagen, estilo, botón) | No       | No                                  | Prompt directo                                                                                                                                      |
-| Cambio pequeño con dudas de enfoque                   | No       | Micro-plan                          | Micro-plan → <font color="#2563EB">BUILD</font>                                                                                                     |
-| Varios archivos, rutas, datos o arquitectura          | Sí       | Sí                                  | Spec → <font color="#3B82F6">Plan</font> → <font color="#2563EB">Build</font>                                                                       |
-| Bug simple                                            | No       | No                                  | <font color="#10B981">VERIFY/FIX</font>                                                                                                             |
-| Bug delicado                                          | Opcional | Sí                                  | <font color="#F97316">EXPLORE</font> → <font color="#3B82F6">Plan</font> → <font color="#10B981">Fix</font>                                         |
-| Migración o refactor grande                           | Sí       | Sí                                  | <font color="#F97316">EXPLORE</font> → <font color="#3B82F6">Plan</font> → <font color="#2563EB">Build</font> → <font color="#10B981">VERIFY</font> |
+| Cambio pequeño con dudas de enfoque                   | No       | Micro-plan                          | Micro-plan → <font color="#2563EB">🔨 BUILD</font>                                                                                                     |
+| Varios archivos, rutas, datos o arquitectura          | Sí       | Sí                                  | Spec → <font color="#3B82F6">📋 Plan</font> → <font color="#2563EB">🔨 Build</font>                                                                       |
+| Bug simple                                            | No       | No                                  | <font color="#10B981"><font color="#10B981">✅ VERIFY</font>/FIX</font>                                                                                                             |
+| Bug delicado                                          | Opcional | Sí                                  | <font color="#F97316">🔍 EXPLORE</font> → <font color="#3B82F6">📋 Plan</font> → <font color="#10B981">✅ Fix</font>                                         |
+| Migración o refactor grande                           | Sí       | Sí                                  | <font color="#F97316">🔍 EXPLORE</font> → <font color="#3B82F6">📋 Plan</font> → <font color="#2563EB">🔨 Build</font> → <font color="#10B981">✅ VERIFY</font> |
 
 **No hace falta spec** si el cambio es pequeño, afecta a pocos archivos, no cambia arquitectura, no añade dependencias, no crea rutas y se puede verificar rápido. Ejemplos: cambiar un texto, añadir una imagen, ajustar un estilo, corregir un alt, cambiar un enlace, añadir un botón.
 
 **Sí conviene spec** si la tarea afecta a varios archivos, crea componentes reutilizables, páginas o rutas nuevas, usa datos dinámicos, afecta a SEO de forma importante, o necesitas continuar en otra sesión. Ejemplos: crear sistema de proyectos, página de detalle, sección reutilizable compleja, integración con CMS/API.
 
-**No hace falta <font color="#3B82F6">PLAN</font>** si la tarea es pequeña, el objetivo está claro, el alcance está cerrado y no hay decisiones técnicas relevantes.
+**No hace falta <font color="#3B82F6">📋 PLAN</font>** si la tarea es pequeña, el objetivo está claro, el alcance está cerrado y no hay decisiones técnicas relevantes.
 
-**Sí conviene <font color="#3B82F6">PLAN</font>** si estás aterrizando en una sesión nueva, hay varias formas de hacerlo, no sabes qué archivos tocar, puede afectar a arquitectura, o quieres revisar antes de ejecutar.
+**Sí conviene <font color="#3B82F6">📋 PLAN</font>** si estás aterrizando en una sesión nueva, hay varias formas de hacerlo, no sabes qué archivos tocar, puede afectar a arquitectura, o quieres revisar antes de ejecutar.
 
 ---
 
@@ -342,7 +342,7 @@ Aterrizar en el estado actual del proyecto antes de decidir el siguiente paso.
 
 Flujo:
 
-<font color="#3B82F6">PLAN</font> aterrizaje  
+<font color="#3B82F6">📋 PLAN</font> aterrizaje  
 &nbsp;&nbsp;↓  
 Leer contexto mínimo  
 &nbsp;&nbsp;↓  
@@ -368,7 +368,7 @@ No necesita spec ni plan.
 
 Prompt directo  
 &nbsp;&nbsp;↓  
-<font color="#2563EB">BUILD</font>  
+<font color="#2563EB">🔨 BUILD</font>  
 &nbsp;&nbsp;↓  
 Resumen final
 
@@ -390,7 +390,7 @@ No necesita spec, pero puede usar micro-plan.
 
 Micro-plan  
 &nbsp;&nbsp;↓  
-<font color="#2563EB">BUILD</font>  
+<font color="#2563EB">🔨 BUILD</font>  
 &nbsp;&nbsp;↓  
 Verificación
 
@@ -410,11 +410,11 @@ Conviene usar spec y plan.
 
 SPEC  
 &nbsp;&nbsp;↓  
-<font color="#3B82F6">PLAN</font>  
+<font color="#3B82F6">📋 PLAN</font>  
 &nbsp;&nbsp;↓  
-<font color="#2563EB">BUILD</font>  
+<font color="#2563EB">🔨 BUILD</font>  
 &nbsp;&nbsp;↓  
-<font color="#10B981">VERIFY</font>
+<font color="#10B981">✅ VERIFY</font>
 
 Ejemplos:
 
@@ -432,13 +432,13 @@ Ejemplos:
 
 Usar fases completas.
 
-<font color="#F97316">EXPLORE</font>  
+<font color="#F97316">🔍 EXPLORE</font>  
 &nbsp;&nbsp;↓  
-<font color="#3B82F6">PLAN</font>  
+<font color="#3B82F6">📋 PLAN</font>  
 &nbsp;&nbsp;↓  
-<font color="#2563EB">BUILD/FIX</font>  
+<font color="#2563EB"><font color="#2563EB">🔨 BUILD</font>/FIX</font>  
 &nbsp;&nbsp;↓  
-<font color="#10B981">VERIFY</font>
+<font color="#10B981">✅ VERIFY</font>
 
 Ejemplos:
 
@@ -469,18 +469,18 @@ Reglas por fase:
 | Fase                                       | Contexto mínimo                                            |
 | ------------------------------------------ | ---------------------------------------------------------- |
 | Aterrizaje                                 | AGENTS.md + handoff + README + package.json                |
-| <font color="#2563EB">BUILD</font> de spec | AGENTS.md + handoff + spec actual                          |
-| <font color="#2563EB">BUILD</font> pequeño | AGENTS.md + archivos implicados                            |
-| <font color="#10B981">VERIFY</font>        | AGENTS.md + archivos del error + handoff                   |
-| No sabes qué tocar                         | <font color="#F97316">EXPLORE</font> en lugar de leer todo |
+| <font color="#2563EB">🔨 BUILD</font> de spec | AGENTS.md + handoff + spec actual                          |
+| <font color="#2563EB">🔨 BUILD</font> pequeño | AGENTS.md + archivos implicados                            |
+| <font color="#10B981">✅ VERIFY</font>        | AGENTS.md + archivos del error + handoff                   |
+| No sabes qué tocar                         | <font color="#F97316">🔍 EXPLORE</font> en lugar de leer todo |
 
 ---
 
 # 8. Plantillas de prompts
 
-## 8.0. Bloque común de reglas
+## 8.0. Bloque común de reglas para BUILD
 
-Estas reglas aplican a las plantillas de tipo <font color="#2563EB">BUILD</font>. Se incluyen aquí para evitar repetirlas en cada una:
+Estas reglas aplican **solo a plantillas de ejecución** (<font color="#2563EB">🔨 BUILD</font>). No las uses en fases de PLAN o REVIEW. Se incluyen aquí para evitar repetirlas en cada plantilla BUILD:
 
 ```txt
 Alcance:
@@ -513,7 +513,7 @@ No debe ejecutar specs.
 
 No debe leer todas las specs.
 
-**Fase:** <font color="#3B82F6">PLAN</font> | **Modelo:** DeepSeek V4 Pro / GPT-5.5
+**Fase:** <font color="#3B82F6">📋 PLAN</font> | **Modelo:** DeepSeek V4 Pro / GPT-5.5
 
 Prompt para copiar y pegar:
 
@@ -583,7 +583,7 @@ Devuélveme:
 
 Usar cuando la tarea sea pequeña, localizada y no requiera una spec formal.
 
-**Fase:** <font color="#2563EB">BUILD</font> | **Modelo:** GLM-5.1 / DeepSeek V4 Pro
+**Fase:** <font color="#2563EB">🔨 BUILD</font> | **Modelo:** GLM-5.1 / DeepSeek V4 Pro
 
 Prompt para copiar y pegar:
 
@@ -639,7 +639,7 @@ Añade una sección simple con título e imagen en la home.
 
 Usar cuando el cambio parece pequeño, pero quieres que OpenCode piense antes de tocar archivos.
 
-**Fase:** <font color="#3B82F6">PLAN</font> | **Modelo:** DeepSeek V4 Pro / GPT-5.5
+**Fase:** <font color="#3B82F6">📋 PLAN</font> | **Modelo:** DeepSeek V4 Pro / GPT-5.5
 
 Prompt para copiar y pegar:
 
@@ -652,7 +652,8 @@ Antes de modificar archivos, dime brevemente:
 - Riesgos mínimos.
 - Si ves necesario crear una spec formal o no.
 
-Después, si confirmas que el alcance es simple, ejecuta el cambio aplicando el bloque común de reglas (8.0).
+No ejecutes cambios todavía.
+Devuélveme el micro-plan y espera confirmación antes de modificar archivos.
 
 Objetivo concreto:
 [AQUÍ EL OBJETIVO]
@@ -669,7 +670,8 @@ Antes de modificar archivos, dime brevemente:
 - Riesgos mínimos.
 - Si ves necesario crear una spec formal o no.
 
-Después, si confirmas que el alcance es simple, ejecuta el cambio aplicando el bloque común de reglas (8.0).
+No ejecutes cambios todavía.
+Devuélveme el micro-plan y espera confirmación antes de modificar archivos.
 
 Objetivo concreto:
 Añade una sección simple con título e imagen en la home.
@@ -677,11 +679,11 @@ Añade una sección simple con título e imagen en la home.
 
 ---
 
-## 8.4. Plantilla para pedir <font color="#3B82F6">PLAN</font>
+## 8.4. Plantilla para pedir <font color="#3B82F6">📋 PLAN</font>
 
 Usar cuando quieres revisar el enfoque antes de ejecutar.
 
-**Fase:** <font color="#3B82F6">PLAN</font> | **Modelo:** DeepSeek V4 Pro / GPT-5.5
+**Fase:** <font color="#3B82F6">📋 PLAN</font> | **Modelo:** DeepSeek V4 Pro / GPT-5.5
 
 Prompt para copiar y pegar:
 
@@ -706,11 +708,11 @@ No ejecutes cambios.
 
 ---
 
-## 8.5. Plantilla para ejecutar un <font color="#3B82F6">PLAN</font> aprobado
+## 8.5. Plantilla para ejecutar un <font color="#3B82F6">📋 PLAN</font> aprobado
 
 Usar cuando OpenCode ya ha creado un plan y tú lo has revisado.
 
-**Fase:** <font color="#2563EB">BUILD</font> | **Modelo:** GLM-5.1 / GPT-5.5
+**Fase:** <font color="#2563EB">🔨 BUILD</font> | **Modelo:** GLM-5.1 / GPT-5.5
 
 Prompt para copiar y pegar:
 
@@ -735,7 +737,7 @@ Al terminar, muestra también:
 
 Usar cuando la tarea ya está definida en una spec.
 
-**Fase:** <font color="#2563EB">BUILD</font> | **Modelo:** GLM-5.1 / GPT-5.5
+**Fase:** <font color="#2563EB">🔨 BUILD</font> | **Modelo:** GLM-5.1 / GPT-5.5
 
 Prompt para copiar y pegar:
 
@@ -790,7 +792,7 @@ Al terminar, actualiza docs/handoff.md y la spec, y muestra también:
 
 Usar cuando algo falla y no quieres avanzar features.
 
-**Fase:** <font color="#10B981">VERIFY/FIX</font> | **Modelo:** GPT-5.5 / DeepSeek V4 Pro
+**Fase:** <font color="#10B981"><font color="#10B981">✅ VERIFY</font>/FIX</font> | **Modelo:** GPT-5.5 / DeepSeek V4 Pro
 
 Prompt para copiar y pegar:
 
@@ -823,11 +825,11 @@ Al terminar, muestra:
 
 ---
 
-## 8.8. Plantilla para <font color="#10B981">VERIFY</font> sin modificar archivos
+## 8.8. Plantilla para <font color="#10B981">✅ VERIFY</font> sin modificar archivos
 
 Usar cuando solo quieres revisar el estado.
 
-**Fase:** <font color="#10B981">VERIFY</font> | **Modelo:** DeepSeek V4 Pro / GPT-5.5
+**Fase:** <font color="#10B981">✅ VERIFY</font> | **Modelo:** DeepSeek V4 Pro / GPT-5.5
 
 Prompt para copiar y pegar:
 
@@ -853,7 +855,7 @@ Devuélveme:
 
 Usar cuando quieres que OpenCode aplique una skill concreta a una tarea y revisar su enfoque antes de ejecutar.
 
-**Fase:** <font color="#3B82F6">PLAN</font> | **Modelo:** DeepSeek V4 Pro / GPT-5.5
+**Fase:** <font color="#3B82F6">📋 PLAN</font> | **Modelo:** DeepSeek V4 Pro / GPT-5.5
 
 Prompt para copiar y pegar:
 
@@ -884,7 +886,7 @@ No ejecutes cambios todavía.
 
 Usar cuando necesitas definir una tarea formal antes de ejecutar.
 
-**Fase:** <font color="#3B82F6">PLAN</font> | **Modelo:** DeepSeek V4 Pro / GPT-5.5
+**Fase:** <font color="#3B82F6">📋 PLAN</font> | **Modelo:** DeepSeek V4 Pro / GPT-5.5
 
 Prompt para copiar y pegar:
 
@@ -905,6 +907,7 @@ La spec debe incluir:
 - Qué no debe hacerse todavía.
 
 Devuélveme la spec lista para guardar en specs/.
+No crees el archivo todavía salvo que te lo pida explícitamente.
 ```
 
 ---
@@ -913,12 +916,14 @@ Devuélveme la spec lista para guardar en specs/.
 
 Usar cuando quieres una revisión tipo code review de los cambios actuales.
 
-**Fase:** <font color="#10B981">VERIFY</font> | **Modelo:** GPT-5.5 / DeepSeek V4 Pro
+**Fase:** <font color="#10B981">✅ VERIFY</font> | **Modelo:** GPT-5.5 / DeepSeek V4 Pro
 
 Prompt para copiar y pegar:
 
 ```txt
 Revisa los cambios actuales como code review sin modificar archivos.
+
+Revisa el diff actual si procede.
 
 Revisa:
 - Bugs introducidos.
@@ -939,7 +944,7 @@ Devuélveme:
 
 Usar cuando una tarea quedó a medias y necesitas recuperar estado.
 
-**Fase:** <font color="#3B82F6">PLAN</font> | **Modelo:** DeepSeek V4 Pro / GPT-5.5
+**Fase:** <font color="#3B82F6">📋 PLAN</font> | **Modelo:** DeepSeek V4 Pro / GPT-5.5
 
 Prompt para copiar y pegar:
 
@@ -1078,13 +1083,13 @@ Si no pasan, el estado debe quedar claro:
 - En revisión.
 ```
 
-### Tipos de <font color="#10B981">VERIFY</font>
+### Tipos de <font color="#10B981">✅ VERIFY</font>
 
 | Tipo                                         | Descripción                                     | ¿Modifica archivos? | ¿Ejecuta comandos? |
 | -------------------------------------------- | ----------------------------------------------- | ------------------- | ------------------ |
-| <font color="#10B981">VERIFY</font> lectura  | Revisar estado, archivos, problemas potenciales | No                  | No                 |
-| <font color="#10B981">VERIFY</font> comandos | Ejecutar check/build/dev para validar           | No                  | Sí                 |
-| <font color="#10B981">VERIFY/FIX</font>      | Diagnosticar y corregir con cambios mínimos     | Sí                  | Sí                 |
+| <font color="#10B981">✅ VERIFY</font> lectura  | Revisar estado, archivos, problemas potenciales | No                  | No                 |
+| <font color="#10B981">✅ VERIFY</font> comandos | Ejecutar check/build/dev para validar           | No                  | Sí                 |
+| <font color="#10B981"><font color="#10B981">✅ VERIFY</font>/FIX</font>      | Diagnosticar y corregir con cambios mínimos     | Sí                  | Sí                 |
 
 ---
 
@@ -1126,19 +1131,19 @@ Si no pasan, el estado debe quedar claro:
 
 | Caso                   | Spec     | Plan            | Flujo                                                                                                                                               |
 | ---------------------- | -------- | --------------- | --------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Aterrizar sesión nueva | No       | Sí              | <font color="#3B82F6">PLAN</font> aterrizaje                                                                                                        |
+| Aterrizar sesión nueva | No       | Sí              | <font color="#3B82F6">📋 PLAN</font> aterrizaje                                                                                                        |
 | Cambiar texto          | No       | No              | Prompt directo                                                                                                                                      |
 | Añadir imagen          | No       | No              | Prompt directo                                                                                                                                      |
 | Añadir sección simple  | No       | No / micro-plan | Prompt directo                                                                                                                                      |
 | Ajuste CSS pequeño     | No       | No              | Prompt directo                                                                                                                                      |
 | Componente pequeño     | Opcional | Micro-plan      | Prompt acotado                                                                                                                                      |
-| Nueva página           | Sí       | Sí              | Spec → <font color="#3B82F6">Plan</font> → <font color="#2563EB">Build</font>                                                                       |
-| Nueva ruta             | Sí       | Sí              | Spec → <font color="#3B82F6">Plan</font> → <font color="#2563EB">Build</font>                                                                       |
-| Sistema de datos       | Sí       | Sí              | <font color="#F97316">Explore</font> → <font color="#3B82F6">Plan</font> → <font color="#2563EB">Build</font>                                       |
-| Migración              | Sí       | Sí              | <font color="#F97316">Explore</font> → <font color="#3B82F6">Plan</font> → <font color="#2563EB">Build</font> → <font color="#10B981">Verify</font> |
-| Bug simple             | No       | No              | <font color="#10B981">Verify/Fix</font>                                                                                                             |
-| Bug delicado           | Opcional | Sí              | <font color="#F97316">Explore</font> → <font color="#3B82F6">Plan</font> → <font color="#10B981">Fix</font>                                         |
-| Refactor grande        | Sí       | Sí              | Spec → <font color="#3B82F6">Plan</font> → <font color="#2563EB">Build</font>                                                                       |
+| Nueva página           | Sí       | Sí              | Spec → <font color="#3B82F6">📋 Plan</font> → <font color="#2563EB">🔨 Build</font>                                                                       |
+| Nueva ruta             | Sí       | Sí              | Spec → <font color="#3B82F6">📋 Plan</font> → <font color="#2563EB">🔨 Build</font>                                                                       |
+| Sistema de datos       | Sí       | Sí              | <font color="#F97316">🔍 Explore</font> → <font color="#3B82F6">📋 Plan</font> → <font color="#2563EB">🔨 Build</font>                                       |
+| Migración              | Sí       | Sí              | <font color="#F97316">🔍 Explore</font> → <font color="#3B82F6">📋 Plan</font> → <font color="#2563EB">🔨 Build</font> → <font color="#10B981">✅ Verify</font> |
+| Bug simple             | No       | No              | <font color="#10B981"><font color="#10B981">✅ Verify</font>/Fix</font>                                                                                                             |
+| Bug delicado           | Opcional | Sí              | <font color="#F97316">🔍 Explore</font> → <font color="#3B82F6">📋 Plan</font> → <font color="#10B981">✅ Fix</font>                                         |
+| Refactor grande        | Sí       | Sí              | Spec → <font color="#3B82F6">📋 Plan</font> → <font color="#2563EB">🔨 Build</font>                                                                       |
 
 ---
 
